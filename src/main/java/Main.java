@@ -16,9 +16,9 @@ import static util.LeaderBoardUtil.getPid;
 import static util.LeaderBoardUtil.getPlayerPicks;
 
 public class Main {
-    private static Date date = new Date();
-    private static String currentDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
-    public  static Map<String, Integer> playerCounter = new HashMap<>();
+    private static final Date date = new Date();
+    private static final String currentDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
+    private  static final Map<String, Integer> playerCounter = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         OkHttpClient client = new OkHttpClient();
@@ -40,9 +40,8 @@ public class Main {
         }
         System.out.println("STATS---");
         System.out.println("");
-        playerCounter = SortUtil.sortByValue(playerCounter);
-        for(Map.Entry<String, Integer> player : playerCounter.entrySet()) {
+        SortUtil.sortByValue(playerCounter).entrySet().forEach(player -> {
             System.out.println(player.getKey() + ": " + player.getValue());
-        }
+        });
     }
 }
