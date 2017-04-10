@@ -31,17 +31,16 @@ public class Main {
         for (LeaderBoard.Player player : leaderBoard.standings.standing) {
             System.out.println("Position: " + player.rank + ": " + player.userName + ": " + player.guid);
             String pid = getPid(client, player.guid);
-            List<PlayerPicks.Pick> picks = getPlayerPicks(client, pid, currentDate);
-            picks.stream().filter(pick -> pick.game_date.equals(currentDate)).forEach(pick -> {
-                System.out.println(pick.name_display_first_last + ": " + pick.game_date);
-                Integer count = playerCounter.containsKey(pick.name_display_first_last) ? playerCounter.get(pick.name_display_first_last) : 0;
-                playerCounter.put(pick.name_display_first_last, count + 1);
+            getPlayerPicks(client, pid, currentDate).stream()
+                    .filter(pick -> pick.game_date.equals(currentDate))
+                    .forEach(pick -> {
+                        System.out.println(pick.name_display_first_last + ": " + pick.game_date);
+                        Integer count = playerCounter.getOrDefault(pick.name_display_first_last, 0);
+                        playerCounter.put(pick.name_display_first_last, count + 1);
             });
         }
         System.out.println("STATS---");
         System.out.println("");
-        SortUtil.sortByValue(playerCounter).entrySet().forEach(player -> {
-            System.out.println(player.getKey() + ": " + player.getValue());
-        });
+        SortUtil.sortByValue(playerCounter).forEach((key, value) -> System.out.println(key + ": " + value));
     }
 }
