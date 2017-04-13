@@ -20,6 +20,13 @@ public class LeaderBoard {
     }
 
     public static class Player {
+
+        public Player(){}
+
+        public Player(String guid){
+            this.guid = guid;
+        }
+
         public String guid;
         public String rank;
         public String cur;
