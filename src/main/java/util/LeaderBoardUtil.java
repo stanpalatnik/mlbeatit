@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class LeaderBoardUtil {
-    private static final String LEADERBOARD_ENTRYPOINT = "http://mlb.mlb.com/fantasylookup/rawjson/named.bts_hitdd_standings.bam?bts_game_id=12&pg=%d&ns=mlb&year=2017&order=high";
+    private static final String LEADERBOARD_ENTRYPOINT = "http://mlb.mlb.com/fantasylookup/rawjson/named.bts_hitdd_standings.bam?bts_game_id=12&pg=%d&ns=mlb&year=2017&order=cur";
     private static final String PLAYER_INFO_ENDPOINT = "http://mlb.mlb.com/fantasylookup/json/named.bts_profile_cmpsd.bam?bts_game_id=12&bts_user_recent_results.maxRows=0&timeframe=365&fntsy_game_id=10&bts_mulligan_status.game_id=bts2017&guid=";
     private static final String PLAYER_PICKS_ENDPOINT = "http://mlb.mlb.com/fantasylookup/rawjson/named.bts_hitdd_picks.bam?ns=mlb&ipid=%s&max_days_back=1&max_days_ahead=1&bts_game_id=12&year=2017&focus_date=%s&ts=1491670980042";
     private static final Moshi MOSHI = new Moshi.Builder().build();
